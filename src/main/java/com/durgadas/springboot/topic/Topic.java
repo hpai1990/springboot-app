@@ -3,11 +3,21 @@ package com.durgadas.springboot.topic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Topic {
 	@Id
+	@ApiModelProperty(notes="ID for the topic")
 	private String id;
+	
+	@ApiModelProperty(notes="Name of the topic")
+	@NotEmpty
 	private String name;
+	
+	@ApiModelProperty(notes="Description for the topic")
 	private String description;
 	
 	public Topic() {
