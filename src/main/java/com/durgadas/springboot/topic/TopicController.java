@@ -15,14 +15,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping("/topics")
+@Api(value="Topics")
 public class TopicController {
 	
 	@Autowired
 	TopicService topicService;
 
 	@GetMapping
+	@ApiOperation(value="View all the registered topics")
+	@ApiResponses(value= {
+			@ApiResponse(code= 200 , message = "Response succesfull"),
+			@ApiResponse(code = 500 , message = "Internal Server error")
+		}
+	)
 	public List<Topic> getAllTopics(@RequestParam (name="name",required=false) String name){
 		if (null != name) {
 			return topicService.getTopicsByName(name);
@@ -32,6 +44,13 @@ public class TopicController {
 	}
 	
 	@GetMapping("/{id}")
+	@ApiOperation(value="Search for a topic with ID")
+	@ApiResponses(value= {
+			@ApiResponse(code= 200 , message = "Response succesfull"),
+			@ApiResponse(code = 404 , message = "Topic not found"),
+			@ApiResponse(code = 500 , message = "Internal Server error")
+		}
+	)
 	public Topic getTopicById(@PathVariable String id) {
 		return topicService.getTopic(id);
 	}
