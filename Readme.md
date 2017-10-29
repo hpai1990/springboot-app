@@ -12,3 +12,6 @@ mvn clean install
   
 - If say application-prod.properties needs to be used then
   > java -jar -Dspring.profiles.active=prod target/springboot-app-0.0.1-SNAPSHOT.jar
+  
+### Swagger UI
+- http://localhost:8080/swagger-ui.html
