@@ -57,12 +57,24 @@ public class TopicController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@ApiOperation(value="Create Topic")
+	@ApiResponses(value= {
+			@ApiResponse(code= 201 , message = "Topic Created"),
+			@ApiResponse(code = 500 , message = "Internal Server error")
+		}
+	)
 	public void addTopic(@RequestBody Topic topic) {
 		topicService.addTopic(topic);
 	}
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@ApiOperation(value="Update Topic")
+	@ApiResponses(value= {
+			@ApiResponse(code= 204 , message = "Topic information updated"),
+			@ApiResponse(code = 500 , message = "Internal Server error")
+		}
+	)
 	public void updateTopic(@RequestBody Topic topic, @PathVariable String id) {
 		topicService.updateTopic(id, topic);
 	}
@@ -70,6 +82,12 @@ public class TopicController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@ApiOperation(value="Delete Topic")
+	@ApiResponses(value= {
+			@ApiResponse(code= 204 , message = "Topic deleted"),
+			@ApiResponse(code = 500 , message = "Internal Server error")
+		}
+	)
 	public void deleteTopic(@PathVariable String id) {
 		topicService.deleteTopic(id);
 	}

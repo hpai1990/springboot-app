@@ -24,6 +24,7 @@ public class SwaggerConfig {
 				.apis(RequestHandlerSelectors.basePackage("com.durgadas.springboot"))
 				.paths(PathSelectors.any())
 				.build()
+				.useDefaultResponseMessages(false) //http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 				.apiInfo(apiInfo());
 	}
 	
