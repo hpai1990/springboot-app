@@ -1,4 +1,4 @@
-# Springboot Example
+# Springboot Example App
 
 ### Build Application
 
