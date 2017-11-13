@@ -1,7 +1,5 @@
 #!groovy
 
-String GIT_VERSION
-
 node {
 
   stage ('Checkout') {
